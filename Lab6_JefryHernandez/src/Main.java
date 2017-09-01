@@ -649,20 +649,114 @@ public class Main extends javax.swing.JFrame {
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         FileWriter fw = null;
         BufferedWriter bw = null;
-        File f  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
-        File f1  = new File("./usuario/"+user.getCorreo()+"/nodeseado.txt");
-        File f2  = new File("./usuario/"+user.getCorreo()+"noleido.txt");
-        File f3  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
-        File f4  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
-        File f5  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
-        File f6  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
-        File f7  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
-        
+        File f = new File("./usuario/" + user.getCorreo() + "/enviado.txt");
+        File f1 = new File("./usuario/" + user.getCorreo() + "/nodeseado.txt");
+        File f2 = new File("./usuario/" + user.getCorreo() + "noleido.txt");
+        File f3 = new File("./usuario/" + user.getCorreo() + "/importantes.txt");
+        File f4 = new File("./usuario/" + user.getCorreo() + "/borrador.txt");
+        File f5 = new File("./usuario/" + user.getCorreo() + "/spam.txt");
+        File f6 = new File("./usuario/" + user.getCorreo() + "/leido.txt");
+        File f7 = new File("./usuario/" + user.getCorreo() + "/eliminado.txt");
+        try {
+            fw = new FileWriter(f, false);
+            bw = new BufferedWriter(fw);
+
+            for (Mensaje m : user.getEnviado()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f1, false);
+            bw = new BufferedWriter(fw);
+
+            for (Mensaje m : user.getNo_deseado()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f2, false);
+            bw = new BufferedWriter(fw);
+
+            for (Mensaje m : user.getNo_leido()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f3, false);
+            bw = new BufferedWriter(fw);
+
+            for (Mensaje m : user.getImportante()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f4, false);
+            bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getBorrador()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f5,false);
+            bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getSpam()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+            
+            fw = new FileWriter(f6,false);
+            bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getLeido()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+            
+            fw = new FileWriter(f7,false);
+            bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getEliminado()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje());
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+            
+        } catch (IOException e) {
+        }
+
         jd_mensajes.dispose();
         user = new Usuario();
-        
-        
-    // TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton8MouseClicked
 
     /**
