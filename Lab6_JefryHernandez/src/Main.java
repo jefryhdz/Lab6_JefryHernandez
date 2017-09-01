@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,6 +68,17 @@ public class Main extends javax.swing.JFrame {
         cb_buzon = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_mensajes = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jd_enviarmensajes = new javax.swing.JDialog();
+        cb_enviar = new javax.swing.JComboBox<>();
+        tf_asunto = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ta_mensaje = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -235,7 +247,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        cb_buzon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enviados", "Leidos", "No leidos", "Importantes", "Eliminados", "Borrador", "Spam", "Importantes", "No deseados", " ", " " }));
+        cb_buzon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enviados", "Leidos", "No leidos", "Eliminados", "Borrador", "Spam", "Importantes", "No deseados", " ", " " }));
         cb_buzon.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_buzonItemStateChanged(evt);
@@ -267,17 +279,49 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jt_mensajes);
 
+        jButton5.setText("Enviar mensajes");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton7.setText("Actualizar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton8.setText("logout");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_mensajesLayout = new javax.swing.GroupLayout(jd_mensajes.getContentPane());
         jd_mensajes.getContentPane().setLayout(jd_mensajesLayout);
         jd_mensajesLayout.setHorizontalGroup(
             jd_mensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_mensajesLayout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(cb_buzon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mensajesLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jd_mensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mensajesLayout.createSequentialGroup()
+                        .addContainerGap(15, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_mensajesLayout.createSequentialGroup()
+                        .addGroup(jd_mensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_mensajesLayout.createSequentialGroup()
+                                .addGap(145, 145, 145)
+                                .addComponent(cb_buzon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_mensajesLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(jButton7)
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton8)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jd_mensajesLayout.setVerticalGroup(
@@ -287,7 +331,72 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(cb_buzon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_mensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        jLabel15.setText("Asunto");
+
+        ta_mensaje.setColumns(20);
+        ta_mensaje.setRows(5);
+        jScrollPane2.setViewportView(ta_mensaje);
+
+        jLabel16.setText("Mensaje");
+
+        jButton6.setText("Enviar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_enviarmensajesLayout = new javax.swing.GroupLayout(jd_enviarmensajes.getContentPane());
+        jd_enviarmensajes.getContentPane().setLayout(jd_enviarmensajesLayout);
+        jd_enviarmensajesLayout.setHorizontalGroup(
+            jd_enviarmensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_enviarmensajesLayout.createSequentialGroup()
+                .addGroup(jd_enviarmensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_enviarmensajesLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel15)
+                        .addGap(45, 45, 45)
+                        .addGroup(jd_enviarmensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cb_enviar, 0, 126, Short.MAX_VALUE)
+                            .addComponent(tf_asunto)))
+                    .addGroup(jd_enviarmensajesLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_enviarmensajesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(150, 150, 150))
+        );
+        jd_enviarmensajesLayout.setVerticalGroup(
+            jd_enviarmensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_enviarmensajesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cb_enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jd_enviarmensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_asunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGroup(jd_enviarmensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_enviarmensajesLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_enviarmensajesLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel16)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton6)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -404,7 +513,7 @@ public class Main extends javax.swing.JFrame {
         jd_login.setModal(true);
         jd_login.pack();
         jd_login.setLocationRelativeTo(this);
-        jd_login.setEnabled(true);
+        jd_login.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -414,10 +523,15 @@ public class Main extends javax.swing.JFrame {
         for (Usuario us : lista) {
             if (us.getCorreo().equals(correo) && us.getContraseña().equals(contra)) {
                 JOptionPane.showMessageDialog(this, "Ingreso con exito");
+                user = us;
                 tf_logincorreo.setText("");
                 pf_logincontra.setText("");
                 jd_login.dispose();
-                user = us;
+                jd_mensajes.setModal(true);
+                jd_mensajes.pack();
+                jd_mensajes.setLocationRelativeTo(this);
+                jd_mensajes.setVisible(true);
+
             }
         }
         JOptionPane.showMessageDialog(this, "Correo o contraseña invalidos");
@@ -440,7 +554,7 @@ public class Main extends javax.swing.JFrame {
             if (cb_buzon.getSelectedItem().equals("Enviados")) {
                 ArrayList<Mensaje> lista = user.getEnviado();
                 for (Mensaje me : lista) {
-                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    String[] row = {me.getReceptor(), me.getMensaje()};
                     model.addRow(row);
                 }
             }
@@ -457,8 +571,30 @@ public class Main extends javax.swing.JFrame {
                     String[] row = {me.getEmisor(), me.getMensaje()};
                     model.addRow(row);
                 }
-            }if (cb_buzon.getSelectedItem().equals("Eliminados")) {
+            }
+            if (cb_buzon.getSelectedItem().equals("Eliminados")) {
                 ArrayList<Mensaje> lista = user.getEliminado();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }
+            if (cb_buzon.getSelectedItem().equals("Borrador")) {
+                ArrayList<Mensaje> lista = user.getBorrador();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }
+            if (cb_buzon.getSelectedItem().equals("Spam")) {
+                ArrayList<Mensaje> lista = user.getSpam();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }
+            if (cb_buzon.getSelectedItem().equals("No deseados")) {
+                ArrayList<Mensaje> lista = user.getNo_deseado();
                 for (Mensaje me : lista) {
                     String[] row = {me.getEmisor(), me.getMensaje()};
                     model.addRow(row);
@@ -467,6 +603,67 @@ public class Main extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_buzonItemStateChanged
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        jd_enviarmensajes.setModal(true);
+        jd_enviarmensajes.pack();
+        jd_enviarmensajes.setLocationRelativeTo(this);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_enviar.getModel();
+        for (Usuario us : lista) {
+            if (us != user) {
+                modelo.addElement(us);
+            }
+
+        }
+        jd_enviarmensajes.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        try {
+            String receptor = cb_enviar.getSelectedItem().toString();
+            String asunto = tf_asunto.getText();
+            String mensaje = ta_mensaje.getText();
+            Usuario emisor = new Usuario();
+
+            Mensaje m = new Mensaje(receptor, user.getCorreo(), mensaje, asunto);
+            for (Usuario us : lista) {
+                if (us.getCorreo().equals(receptor)) {
+                    emisor = us;
+                }
+            }
+            emisor.getNo_leido().add(m);
+            user.getEnviado().add(m);
+            jd_enviarmensajes.dispose();
+            jd_mensajes.setVisible(true);
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        File f  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
+        File f1  = new File("./usuario/"+user.getCorreo()+"/nodeseado.txt");
+        File f2  = new File("./usuario/"+user.getCorreo()+"noleido.txt");
+        File f3  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
+        File f4  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
+        File f5  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
+        File f6  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
+        File f7  = new File("./usuario/"+user.getCorreo()+"/enviado.txt");
+        
+        jd_mensajes.dispose();
+        user = new Usuario();
+        
+        
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -505,18 +702,25 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_buzon;
+    private javax.swing.JComboBox<String> cb_enviar;
     private javax.swing.JComboBox<String> cb_pais;
     private com.toedter.calendar.JDateChooser dc_fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -526,14 +730,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_CrearCuenta;
+    private javax.swing.JDialog jd_enviarmensajes;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_mensajes;
     private javax.swing.JTable jt_mensajes;
     private javax.swing.JPasswordField pf_confirmr;
     private javax.swing.JPasswordField pf_logincontra;
     private javax.swing.JPasswordField pf_password;
+    private javax.swing.JTextArea ta_mensaje;
     private javax.swing.JTextField tf_apellido;
+    private javax.swing.JTextField tf_asunto;
     private javax.swing.JTextField tf_logincorreo;
     private javax.swing.JTextField tf_mail;
     private javax.swing.JTextField tf_nombre;
@@ -545,33 +753,36 @@ public class Main extends javax.swing.JFrame {
 
     public void crearfolder(String nombre) throws IOException {
         File carpeta = new File("./usuario/" + nombre);
-        carpeta.mkdir();
-        FileWriter fw;
-        BufferedWriter bw;
+        if (!carpeta.exists()) {
 
-        fw = new FileWriter("./usuario/" + nombre + "/leido.txt");
-        bw = new BufferedWriter(fw);
-        //leido.mkdir();
-        fw = new FileWriter("./usuario/" + nombre + "/noleido.txt");
-        bw = new BufferedWriter(fw);
+            carpeta.mkdir();
+            FileWriter fw;
+            BufferedWriter bw;
 
-        fw = new FileWriter("./usuario/" + nombre + "/spam.txt");
-        bw = new BufferedWriter(fw);
+            fw = new FileWriter("./usuario/" + nombre + "/leido.txt");
+            bw = new BufferedWriter(fw);
+            //leido.mkdir();
+            fw = new FileWriter("./usuario/" + nombre + "/noleido.txt");
+            bw = new BufferedWriter(fw);
 
-        fw = new FileWriter("./usuario/" + nombre + "/eliminado.txt");
-        bw = new BufferedWriter(fw);
+            fw = new FileWriter("./usuario/" + nombre + "/spam.txt");
+            bw = new BufferedWriter(fw);
 
-        fw = new FileWriter("./usuario/" + nombre + "/borrador.txt");
-        bw = new BufferedWriter(fw);
+            fw = new FileWriter("./usuario/" + nombre + "/eliminado.txt");
+            bw = new BufferedWriter(fw);
 
-        fw = new FileWriter("./usuario/" + nombre + "/importantes.txt");
-        bw = new BufferedWriter(fw);
+            fw = new FileWriter("./usuario/" + nombre + "/borrador.txt");
+            bw = new BufferedWriter(fw);
 
-        fw = new FileWriter("./usuario/" + nombre + "/enviado.txt");
-        bw = new BufferedWriter(fw);
+            fw = new FileWriter("./usuario/" + nombre + "/importantes.txt");
+            bw = new BufferedWriter(fw);
 
-        fw = new FileWriter("./usuario/" + nombre + "/nodeseado.txt");
-        bw = new BufferedWriter(fw);
+            fw = new FileWriter("./usuario/" + nombre + "/enviado.txt");
+            bw = new BufferedWriter(fw);
 
+            fw = new FileWriter("./usuario/" + nombre + "/nodeseado.txt");
+            bw = new BufferedWriter(fw);
+
+        }
     }
 }

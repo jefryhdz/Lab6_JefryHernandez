@@ -12,13 +12,15 @@ public class Mensaje {
     private String receptor;
     private String emisor;
     private String mensaje;
+    private String asunto;
 
-    public Mensaje(String receptor, String emisor, String mensaje) {
+    public Mensaje(String receptor, String emisor, String mensaje, String asunto) {
         this.receptor = receptor;
         this.emisor = emisor;
         this.mensaje = mensaje;
+        this.asunto = asunto;
     }
-    
+
     public String getReceptor() {
         return receptor;
     }
@@ -41,6 +43,14 @@ public class Mensaje {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public String getAsunto() {
+        return asunto;
+    }
+
+    public void setAsunto(String asunto) {
+        this.asunto = asunto;
     }
 
     @Override

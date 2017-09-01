@@ -39,6 +39,9 @@ public class Usuario {
         this.correo = correo;
     }
 
+    public Usuario() {
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -157,6 +160,11 @@ public class Usuario {
 
     public void setNo_deseado(ArrayList<Mensaje> no_deseado) {
         this.no_deseado = no_deseado;
+    }
+
+    @Override
+    public String toString() {
+        return correo;
     }
 
   
