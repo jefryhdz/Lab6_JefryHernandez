@@ -62,6 +62,7 @@ public class Main extends javax.swing.JFrame {
         tf_numero = new javax.swing.JTextField();
         cb_pais = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
         jd_mensajes = new javax.swing.JDialog();
         cb_buzon = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -157,6 +158,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setText("@unitec.edu");
+
         javax.swing.GroupLayout jd_CrearCuentaLayout = new javax.swing.GroupLayout(jd_CrearCuenta.getContentPane());
         jd_CrearCuenta.getContentPane().setLayout(jd_CrearCuentaLayout);
         jd_CrearCuentaLayout.setHorizontalGroup(
@@ -174,18 +177,19 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jd_CrearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addGroup(jd_CrearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tf_nombre)
-                        .addComponent(tf_apellido)
-                        .addComponent(tf_mail)
-                        .addComponent(dc_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pf_password)
-                        .addComponent(pf_confirmr)
-                        .addComponent(tf_numero)
-                        .addComponent(cb_pais, 0, 118, Short.MAX_VALUE)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_nombre)
+                    .addComponent(tf_apellido)
+                    .addComponent(tf_mail)
+                    .addComponent(dc_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pf_password)
+                    .addComponent(pf_confirmr)
+                    .addComponent(tf_numero)
+                    .addComponent(cb_pais, 0, 118, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jd_CrearCuentaLayout.setVerticalGroup(
             jd_CrearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,7 +209,8 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jd_CrearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(tf_mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tf_mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -425,8 +430,39 @@ public class Main extends javax.swing.JFrame {
     private void cb_buzonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_buzonItemStateChanged
         if (evt.getStateChange() == 2) {
             DefaultTableModel model = (DefaultTableModel) jt_mensajes.getModel();
-            if (cb_buzon.getSelectedItem().equals("")) {
-                
+            if (cb_buzon.getSelectedItem().equals("No leidos")) {
+                ArrayList<Mensaje> lista = user.getNo_leido();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }
+            if (cb_buzon.getSelectedItem().equals("Enviados")) {
+                ArrayList<Mensaje> lista = user.getEnviado();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }
+            if (cb_buzon.getSelectedItem().equals("Leidos")) {
+                ArrayList<Mensaje> lista = user.getLeido();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }
+            if (cb_buzon.getSelectedItem().equals("Importantes")) {
+                ArrayList<Mensaje> lista = user.getImportante();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
+            }if (cb_buzon.getSelectedItem().equals("Eliminados")) {
+                ArrayList<Mensaje> lista = user.getEliminado();
+                for (Mensaje me : lista) {
+                    String[] row = {me.getEmisor(), me.getMensaje()};
+                    model.addRow(row);
+                }
             }
         }
         // TODO add your handling code here:
@@ -480,6 +516,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

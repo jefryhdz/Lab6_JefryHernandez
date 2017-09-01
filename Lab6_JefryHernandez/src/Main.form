@@ -109,20 +109,20 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel2" pref="118" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton3" max="32767" attributes="0"/>
-                          <Component id="tf_nombre" max="32767" attributes="0"/>
-                          <Component id="tf_apellido" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tf_mail" max="32767" attributes="0"/>
-                          <Component id="dc_fecha" max="32767" attributes="0"/>
-                          <Component id="pf_password" max="32767" attributes="0"/>
-                          <Component id="pf_confirmr" max="32767" attributes="0"/>
-                          <Component id="tf_numero" max="32767" attributes="0"/>
-                          <Component id="cb_pais" pref="118" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel2" max="32767" attributes="0"/>
+                      <Component id="jButton3" max="32767" attributes="0"/>
+                      <Component id="tf_nombre" max="32767" attributes="0"/>
+                      <Component id="tf_apellido" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tf_mail" max="32767" attributes="0"/>
+                      <Component id="dc_fecha" max="32767" attributes="0"/>
+                      <Component id="pf_password" max="32767" attributes="0"/>
+                      <Component id="pf_confirmr" max="32767" attributes="0"/>
+                      <Component id="tf_numero" max="32767" attributes="0"/>
+                      <Component id="cb_pais" pref="118" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="138" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -147,6 +147,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tf_mail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" pref="14" max="-2" attributes="0"/>
@@ -265,6 +266,11 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseEntered"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="@unitec.edu"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
