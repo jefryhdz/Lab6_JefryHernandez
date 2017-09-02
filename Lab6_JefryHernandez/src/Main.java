@@ -80,7 +80,7 @@ public class Main extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jd_login2 = new javax.swing.JDialog();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_usuaro = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         ta_asunto1 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -408,6 +408,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        cb_usuaro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_usuaroItemStateChanged(evt);
+            }
+        });
+
         jLabel14.setText("Asunto");
 
         ta_mensaje2.setColumns(20);
@@ -417,6 +423,11 @@ public class Main extends javax.swing.JFrame {
         jLabel17.setText("mensaje");
 
         jButton9.setText("Enviar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_login2Layout = new javax.swing.GroupLayout(jd_login2.getContentPane());
         jd_login2.getContentPane().setLayout(jd_login2Layout);
@@ -435,7 +446,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jButton9))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_login2Layout.createSequentialGroup()
                             .addGap(157, 157, 157)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cb_usuaro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jd_login2Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel17)
@@ -447,7 +458,7 @@ public class Main extends javax.swing.JFrame {
             jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_login2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_usuaro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -603,6 +614,13 @@ public class Main extends javax.swing.JFrame {
                 jd_login2.pack();
                 jd_login2.setLocationRelativeTo(this);
                 jd_login2.setVisible(true);
+                DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_usuaro.getModel();
+                for (Usuario ux : lista) {
+                    if (ux != user) {
+                        modelo.addElement(us);
+                    }
+
+                }
                 jd_login.dispose();
 
             }
@@ -727,9 +745,33 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jd_login2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jd_login2MouseClicked
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jd_login2MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        String asunto = ta_asunto1.getText();
+        String mensaje = ta_mensaje2.getText();
+        String receptor = cb_usuaro.getSelectedItem().toString();
+        Usuario rece = new Usuario();
+        for (Usuario usuario : lista) {
+            if (usuario.getCorreo().equals(receptor)) {
+                rece = usuario;
+            }
+        }
+        Mensaje m = new Mensaje(receptor, receptor, mensaje, asunto);
+        rece.getNo_leido().add(m);
+        user.getEnviado().add(m);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void cb_usuaroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_usuaroItemStateChanged
+        if (evt.getStateChange() == 2) {
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_usuaroItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -770,6 +812,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_buzon;
     private javax.swing.JComboBox<String> cb_enviar;
     private javax.swing.JComboBox<String> cb_pais;
+    private javax.swing.JComboBox<String> cb_usuaro;
     private com.toedter.calendar.JDateChooser dc_fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -780,7 +823,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
