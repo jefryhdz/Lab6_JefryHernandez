@@ -16,7 +16,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String contraseña;
-    private Date fecha;
+    private String fecha;
     private String pais;
     private String numero;
     private String correo;
@@ -29,7 +29,7 @@ public class Usuario {
     private ArrayList<Mensaje> importante = new ArrayList();
     private ArrayList<Mensaje> no_deseado = new ArrayList();
 
-    public Usuario(String nombre, String apellido, String contraseña, Date fecha, String pais, String numero, String correo) {
+    public Usuario(String nombre, String apellido, String contraseña, String fecha, String pais, String numero, String correo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.contraseña = contraseña;
@@ -66,11 +66,11 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

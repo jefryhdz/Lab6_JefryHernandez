@@ -64,7 +64,6 @@ public class Main extends javax.swing.JFrame {
         tf_numero = new javax.swing.JTextField();
         cb_pais = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
         jd_mensajes = new javax.swing.JDialog();
         cb_buzon = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,6 +79,14 @@ public class Main extends javax.swing.JFrame {
         ta_mensaje = new javax.swing.JTextArea();
         jLabel16 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jd_login2 = new javax.swing.JDialog();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        ta_asunto1 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ta_mensaje2 = new javax.swing.JTextArea();
+        jLabel17 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -171,8 +178,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setText("@unitec.edu");
-
         javax.swing.GroupLayout jd_CrearCuentaLayout = new javax.swing.GroupLayout(jd_CrearCuenta.getContentPane());
         jd_CrearCuenta.getContentPane().setLayout(jd_CrearCuentaLayout);
         jd_CrearCuentaLayout.setHorizontalGroup(
@@ -200,9 +205,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(pf_confirmr)
                     .addComponent(tf_numero)
                     .addComponent(cb_pais, 0, 118, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         jd_CrearCuentaLayout.setVerticalGroup(
             jd_CrearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,8 +225,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jd_CrearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(tf_mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
+                            .addComponent(tf_mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(dc_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -400,6 +402,68 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
+        jd_login2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jd_login2MouseClicked(evt);
+            }
+        });
+
+        jLabel14.setText("Asunto");
+
+        ta_mensaje2.setColumns(20);
+        ta_mensaje2.setRows(5);
+        jScrollPane3.setViewportView(ta_mensaje2);
+
+        jLabel17.setText("mensaje");
+
+        jButton9.setText("Enviar");
+
+        javax.swing.GroupLayout jd_login2Layout = new javax.swing.GroupLayout(jd_login2.getContentPane());
+        jd_login2.getContentPane().setLayout(jd_login2Layout);
+        jd_login2Layout.setHorizontalGroup(
+            jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_login2Layout.createSequentialGroup()
+                .addGroup(jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jd_login2Layout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addComponent(jLabel14)
+                            .addGap(51, 51, 51)
+                            .addComponent(ta_asunto1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_login2Layout.createSequentialGroup()
+                            .addGap(149, 149, 149)
+                            .addComponent(jButton9))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_login2Layout.createSequentialGroup()
+                            .addGap(157, 157, 157)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_login2Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+        jd_login2Layout.setVerticalGroup(
+            jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_login2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(ta_asunto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jd_login2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_login2Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_login2Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel17)))
+                .addGap(43, 43, 43)
+                .addComponent(jButton9)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Crear cuenta");
@@ -454,7 +518,7 @@ public class Main extends javax.swing.JFrame {
             String correo = tf_mail.getText();
             String numero = tf_numero.getText();
             String contraseña = "";
-            Date fecha = dc_fecha.getDate();
+            String fecha = dc_fecha.getDate().toString();
             if (!usuarios.contains(correo)) {
                 if ((pf_password.getText().equals(pf_confirmr.getText())) && (!pf_password.equals(""))) {
                     contraseña = pf_password.getText();
@@ -462,6 +526,7 @@ public class Main extends javax.swing.JFrame {
                     crearfolder(correo);
                     Usuario p = new Usuario(nombre, apelllido, contraseña, fecha, pais, numero, correo);
                     lista.add(p);
+
                     tf_nombre.setText("");
                     tf_apellido.setText("");
                     tf_mail.setText("");
@@ -522,7 +587,7 @@ public class Main extends javax.swing.JFrame {
         String correo = tf_logincorreo.getText();
         String contra = pf_logincontra.getText();
         for (Usuario us : lista) {
-            if (us.getCorreo().equals(correo) && us.getContraseña().equals(contra)) {
+            if (us.getCorreo().equals(correo) && us.getContraseña().equals(contra) && correo.contains("@unitec.edu")) {
                 JOptionPane.showMessageDialog(this, "Ingreso con exito");
                 user = us;
                 tf_logincorreo.setText("");
@@ -532,6 +597,13 @@ public class Main extends javax.swing.JFrame {
                 jd_mensajes.pack();
                 jd_mensajes.setLocationRelativeTo(this);
                 jd_mensajes.setVisible(true);
+
+            } else if (us.getCorreo().equals(correo) && us.getContraseña().equals(contra)) {
+                jd_login2.setModal(true);
+                jd_login2.pack();
+                jd_login2.setLocationRelativeTo(this);
+                jd_login2.setVisible(true);
+                jd_login.dispose();
 
             }
         }
@@ -654,6 +726,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8MouseClicked
 
+    private void jd_login2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jd_login2MouseClicked
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jd_login2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -702,6 +779,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -710,6 +789,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -720,15 +800,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JDialog jd_CrearCuenta;
     private javax.swing.JDialog jd_enviarmensajes;
     private javax.swing.JDialog jd_login;
+    private javax.swing.JDialog jd_login2;
     private javax.swing.JDialog jd_mensajes;
     private javax.swing.JTable jt_mensajes;
     private javax.swing.JPasswordField pf_confirmr;
     private javax.swing.JPasswordField pf_logincontra;
     private javax.swing.JPasswordField pf_password;
+    private javax.swing.JTextField ta_asunto1;
     private javax.swing.JTextArea ta_mensaje;
+    private javax.swing.JTextArea ta_mensaje2;
     private javax.swing.JTextField tf_apellido;
     private javax.swing.JTextField tf_asunto;
     private javax.swing.JTextField tf_logincorreo;
@@ -741,7 +825,7 @@ public class Main extends javax.swing.JFrame {
     Usuario user;
 
     public void crearfolder(String nombre) throws IOException {
-
+        File carpeta = new File(":/" + nombre);
         carpeta.mkdir();
         FileWriter fw;
         BufferedWriter bw;
@@ -952,8 +1036,8 @@ public class Main extends javax.swing.JFrame {
                 user.getBorrador().add(new Mensaje(receptor, emisor, mensaje, asunto));
             }
             sc.close();
-            
-            sc = new Scanner (f5);
+
+            sc = new Scanner(f5);
             sc.useDelimiter(";");
             while (sc.hasNext()) {
                 String receptor = sc.next();
@@ -963,8 +1047,8 @@ public class Main extends javax.swing.JFrame {
                 user.getSpam().add(new Mensaje(receptor, emisor, mensaje, asunto));
             }
             sc.close();
-            
-            sc = new Scanner (f6);
+
+            sc = new Scanner(f6);
             sc.useDelimiter(";");
             while (sc.hasNext()) {
                 String receptor = sc.next();
@@ -974,7 +1058,7 @@ public class Main extends javax.swing.JFrame {
                 user.getLeido().add(new Mensaje(receptor, emisor, mensaje, asunto));
             }
             sc.close();
-                        
+
             sc = new Scanner(f7);
             sc.useDelimiter(";");
             while (sc.hasNext()) {
@@ -986,9 +1070,28 @@ public class Main extends javax.swing.JFrame {
                 user.getEliminado().add(new Mensaje(receptor, emisor, mensaje, asunto));
             }
             sc.close();
-            
-            
+
         } catch (Exception e) {
         }
     }
+
+    public void usuarioarchivo(Usuario u) {
+        FileWriter fw;
+        BufferedWriter bw;
+        File f = null;
+        try {
+            fw = new FileWriter("./usuario/usuario.txt", true);
+            bw = new BufferedWriter(fw);
+            bw.write(u.getNombre() + ";");
+            bw.write(u.getApellido() + ";");
+            bw.write(u.getContraseña() + ";");
+            bw.write(u.getFecha() + ";");
+            bw.write(u.getPais() + ";");
+            bw.write(u.getNumero() + ";");
+            bw.write(u.getCorreo() + ";");
+        } catch (Exception e) {
+        }
+
+    }
+
 }
