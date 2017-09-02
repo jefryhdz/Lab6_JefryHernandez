@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -534,7 +535,7 @@ public class Main extends javax.swing.JFrame {
 
             }
         }
-        JOptionPane.showMessageDialog(this, "Correo o contraseña invalidos");
+
         tf_logincorreo.setText("");
         pf_logincontra.setText("");
 
@@ -647,112 +648,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        File f = new File("./usuario/" + user.getCorreo() + "/enviado.txt");
-        File f1 = new File("./usuario/" + user.getCorreo() + "/nodeseado.txt");
-        File f2 = new File("./usuario/" + user.getCorreo() + "noleido.txt");
-        File f3 = new File("./usuario/" + user.getCorreo() + "/importantes.txt");
-        File f4 = new File("./usuario/" + user.getCorreo() + "/borrador.txt");
-        File f5 = new File("./usuario/" + user.getCorreo() + "/spam.txt");
-        File f6 = new File("./usuario/" + user.getCorreo() + "/leido.txt");
-        File f7 = new File("./usuario/" + user.getCorreo() + "/eliminado.txt");
-        try {
-            fw = new FileWriter(f, false);
-            bw = new BufferedWriter(fw);
-
-            for (Mensaje m : user.getEnviado()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-
-            fw = new FileWriter(f1, false);
-            bw = new BufferedWriter(fw);
-
-            for (Mensaje m : user.getNo_deseado()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-
-            fw = new FileWriter(f2, false);
-            bw = new BufferedWriter(fw);
-
-            for (Mensaje m : user.getNo_leido()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-
-            fw = new FileWriter(f3, false);
-            bw = new BufferedWriter(fw);
-
-            for (Mensaje m : user.getImportante()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-
-            fw = new FileWriter(f4, false);
-            bw = new BufferedWriter(fw);
-            for (Mensaje m : user.getBorrador()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-
-            fw = new FileWriter(f5,false);
-            bw = new BufferedWriter(fw);
-            for (Mensaje m : user.getSpam()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-            
-            fw = new FileWriter(f6,false);
-            bw = new BufferedWriter(fw);
-            for (Mensaje m : user.getLeido()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-            
-            fw = new FileWriter(f7,false);
-            bw = new BufferedWriter(fw);
-            for (Mensaje m : user.getEliminado()) {
-                bw.write(m.getReceptor() + ";");
-                bw.write(m.getEmisor() + ";");
-                bw.write(m.getMensaje());
-                bw.write(m.getAsunto() + ";");
-            }
-            bw.flush();
-            bw.close();
-            
-        } catch (IOException e) {
-        }
-
         jd_mensajes.dispose();
         user = new Usuario();
 
@@ -846,37 +741,254 @@ public class Main extends javax.swing.JFrame {
     Usuario user;
 
     public void crearfolder(String nombre) throws IOException {
-        File carpeta = new File("./usuario/" + nombre);
-        if (!carpeta.exists()) {
 
-            carpeta.mkdir();
-            FileWriter fw;
-            BufferedWriter bw;
+        carpeta.mkdir();
+        FileWriter fw;
+        BufferedWriter bw;
 
-            fw = new FileWriter("./usuario/" + nombre + "/leido.txt");
+        fw = new FileWriter("./usuario/" + nombre + "/leido.txt");
+        bw = new BufferedWriter(fw);
+        //leido.mkdir();
+        fw = new FileWriter("./usuario/" + nombre + "/noleido.txt");
+        bw = new BufferedWriter(fw);
+
+        fw = new FileWriter("./usuario/" + nombre + "/spam.txt");
+        bw = new BufferedWriter(fw);
+
+        fw = new FileWriter("./usuario/" + nombre + "/eliminado.txt");
+        bw = new BufferedWriter(fw);
+
+        fw = new FileWriter("./usuario/" + nombre + "/borrador.txt");
+        bw = new BufferedWriter(fw);
+
+        fw = new FileWriter("./usuario/" + nombre + "/importantes.txt");
+        bw = new BufferedWriter(fw);
+
+        fw = new FileWriter("./usuario/" + nombre + "/enviado.txt");
+        bw = new BufferedWriter(fw);
+
+        fw = new FileWriter("./usuario/" + nombre + "/nodeseado.txt");
+        bw = new BufferedWriter(fw);
+
+    }
+
+    public void llenararchivos() {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        File f = new File("./usuario/" + user.getCorreo() + "/enviado.txt");
+        File f1 = new File("./usuario/" + user.getCorreo() + "/nodeseado.txt");
+        File f2 = new File("./usuario/" + user.getCorreo() + "noleido.txt");
+        File f3 = new File("./usuario/" + user.getCorreo() + "/importantes.txt");
+        File f4 = new File("./usuario/" + user.getCorreo() + "/borrador.txt");
+        File f5 = new File("./usuario/" + user.getCorreo() + "/spam.txt");
+        File f6 = new File("./usuario/" + user.getCorreo() + "/leido.txt");
+        File f7 = new File("./usuario/" + user.getCorreo() + "/eliminado.txt");
+        try {
+            fw = new FileWriter(f, false);
             bw = new BufferedWriter(fw);
-            //leido.mkdir();
-            fw = new FileWriter("./usuario/" + nombre + "/noleido.txt");
+
+            for (Mensaje m : user.getEnviado()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f1, false);
             bw = new BufferedWriter(fw);
 
-            fw = new FileWriter("./usuario/" + nombre + "/spam.txt");
+            for (Mensaje m : user.getNo_deseado()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f2, false);
             bw = new BufferedWriter(fw);
 
-            fw = new FileWriter("./usuario/" + nombre + "/eliminado.txt");
+            for (Mensaje m : user.getNo_leido()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+            fw = new FileWriter(f3, false);
             bw = new BufferedWriter(fw);
 
-            fw = new FileWriter("./usuario/" + nombre + "/borrador.txt");
-            bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getImportante()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
 
-            fw = new FileWriter("./usuario/" + nombre + "/importantes.txt");
+            fw = new FileWriter(f4, false);
             bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getBorrador()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
 
-            fw = new FileWriter("./usuario/" + nombre + "/enviado.txt");
+            fw = new FileWriter(f5, false);
             bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getSpam()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
 
-            fw = new FileWriter("./usuario/" + nombre + "/nodeseado.txt");
+            fw = new FileWriter(f6, false);
             bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getLeido()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
 
+            fw = new FileWriter(f7, false);
+            bw = new BufferedWriter(fw);
+            for (Mensaje m : user.getEliminado()) {
+                bw.write(m.getReceptor() + ";");
+                bw.write(m.getEmisor() + ";");
+                bw.write(m.getMensaje() + ";");
+                bw.write(m.getAsunto() + ";");
+            }
+            bw.flush();
+            bw.close();
+
+        } catch (IOException e) {
+        }
+
+    }
+
+    public void cargararraylist() {
+
+        Scanner sc = null;
+
+        try {
+            File f = new File("./usuario/" + user.getCorreo() + "/enviado.txt");
+            File f1 = new File("./usuario/" + user.getCorreo() + "/nodeseado.txt");
+            File f2 = new File("./usuario/" + user.getCorreo() + "noleido.txt");
+            File f3 = new File("./usuario/" + user.getCorreo() + "/importantes.txt");
+            File f4 = new File("./usuario/" + user.getCorreo() + "/borrador.txt");
+            File f5 = new File("./usuario/" + user.getCorreo() + "/spam.txt");
+            File f6 = new File("./usuario/" + user.getCorreo() + "/leido.txt");
+            File f7 = new File("./usuario/" + user.getCorreo() + "/eliminado.txt");
+            sc = new Scanner(f);
+            sc.useDelimiter(";");
+
+            while (sc.hasNext()) {
+
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getEnviado().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+
+            sc = new Scanner(f1);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getNo_deseado().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+
+            sc = new Scanner(f2);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getNo_leido().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+
+            sc = new Scanner(f3);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getImportante().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+
+            sc = new Scanner(f4);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getBorrador().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+            
+            sc = new Scanner (f5);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getSpam().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+            
+            sc = new Scanner (f6);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getLeido().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+                        
+            sc = new Scanner(f7);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+
+                String receptor = sc.next();
+                String emisor = sc.next();
+                String mensaje = sc.next();
+                String asunto = sc.next();
+                user.getEliminado().add(new Mensaje(receptor, emisor, mensaje, asunto));
+            }
+            sc.close();
+            
+            
+        } catch (Exception e) {
         }
     }
 }
